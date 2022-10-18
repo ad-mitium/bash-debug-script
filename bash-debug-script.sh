@@ -37,6 +37,12 @@ elif [ $(date +%k%M) -lt $start_window ] # Don't execute before this time
         echo $(date +%I:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
     30|40)
         echo $(date +%I:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
+        i=0
+        while [ $i -lt 3 ]
+            do  
+                play -q $cwd/media//beep.wav -t alsa
+                ((i++))
+            done
     *0)
         echo $(date +%I:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
         sleep 0.875s
