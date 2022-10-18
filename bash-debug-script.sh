@@ -35,14 +35,14 @@ elif [ $(date +%k%M) -lt $start_window ] # Don't execute before this time
         ;;
     15)
         echo $(date +%I:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
-    20)
+    30|40)
         echo $(date +%I:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
-    30)
+    *0)
         echo $(date +%I:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
-    40)
-        echo $(date +%I:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
-    45|55)
-        echo $(date +%I:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
+        sleep 0.875s
+        play -q $cwd/media/beep.wav -t alsa
+    *5)
+        echo $(date +:%M:%S) $(date +%p) >> $base_dir/$data_dir/$error_file;;
     *)
         echo -e "    \033[1;33m\033[43  Nothing to do at "$(date +%I:%M:%S)"    \033[0m"
         ;;
