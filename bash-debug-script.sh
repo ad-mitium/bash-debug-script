@@ -40,7 +40,7 @@ elif [ $(date +%k%M) -lt $start_window ] # Don't execute before this time
         i=0
         while [ $i -lt 3 ]
             do  
-                play -q $cwd/media//beep.wav -t alsa
+                play -q $cwd/media/beep.wav -t alsa
                 ((i++))
             done
     *0)
