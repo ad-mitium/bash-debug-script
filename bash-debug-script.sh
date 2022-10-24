@@ -1,9 +1,10 @@
-#/bin/bash
+#!/bin/bash
 
 echo "Executing..."
 
 #####  Basic parameters  #####
-base_dir=~/Documents/Code/bash-debug-script
+home_dir=$HOME
+base_dir=$home_dir/Documents/Code/bash-debug-script
 data_dir=data
 start_window=750
 stop_window=1630
@@ -62,3 +63,6 @@ elif [ $(date +%k%M) -lt $start_window ] # Don't execute before this time
 #    date 1>>$base_dir/$data_dir/$output_file 2>>$base_dir/$data_dir/$error_file
     play -q $cwd/media/beep.wav -t alsa
 fi
+
+#####  Timestamp output and error files  #####
+date | /usr/bin/tee -a $home_dir/$base_dir/$data_dir/${error_file,output_file} #bash shell needed for this line
